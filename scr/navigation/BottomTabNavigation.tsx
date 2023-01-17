@@ -22,7 +22,7 @@ export const BottomTabNavigation = () => {
             }
           };
           const iconName = getIconName();
-          return <TabIcon iconName={iconName} iconColor={focused ? 'tomato' : 'gray'} />;
+          return <TabIcon iconName={iconName} iconColor={color} />;
         },
       })}>
       <Tabs.Screen name="ImageList" component={ImageListScreen}></Tabs.Screen>
