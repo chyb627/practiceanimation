@@ -1,4 +1,3 @@
-import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { Button } from '../components/Button';
@@ -6,14 +5,15 @@ import { Header } from '../components/Header/Header';
 import { Icon } from '../components/Icons';
 import { RemoteImage } from '../components/RemoteImage';
 import { Typography } from '../components/Typography';
+import { useRootNavigation, useRootRoute } from '../navigation/RootNavigation';
 
-export const ImageDetailScreen = (props) => {
-  const navigation = useNavigation();
-  const route = useRoute();
+export const ImageDetailScreen: React.FC = (props) => {
+  const navigation = useRootNavigation<'ImageDetail'>();
+  const route = useRootRoute<'ImageDetail'>();
 
   const onPressBack = useCallback(() => {
     navigation.goBack();
-  }, []);
+  }, [navigation]);
   const { width } = useWindowDimensions();
 
   const onPressDownload = useCallback(() => {
@@ -24,9 +24,8 @@ export const ImageDetailScreen = (props) => {
     <View style={styles.container}>
       <Header>
         <Header.Group>
-          <Header.Icon iconName={'arrow-back'} onPress={onPressBack}>
-            <Header.Title title="IMAGE DETAIL" />
-          </Header.Icon>
+          <Header.Icon iconName={'arrow-back'} onPress={onPressBack} />
+          <Header.Title title="IMAGE DETAIL" />
         </Header.Group>
       </Header>
 

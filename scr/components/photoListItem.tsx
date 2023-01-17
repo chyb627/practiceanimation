@@ -1,12 +1,12 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 import { useWindowDimensions } from 'react-native';
+import { useRootNavigation } from '../navigation/RootNavigation';
 import { Button } from './Button';
 import { RemoteImage } from './RemoteImage';
 
-export const PhotoListItem = (props) => {
+export const PhotoListItem: React.FC<{ url: string }> = (props) => {
   const { width } = useWindowDimensions();
-  const navigation = useNavigation();
+  const navigation = useRootNavigation();
 
   const onPressItem = useCallback(() => {
     navigation.navigate('ImageDetail', { url: props.url });

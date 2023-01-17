@@ -1,11 +1,24 @@
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+  NavigatorScreenParams,
+  RouteProp,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
 import React from 'react';
 
 import { ImageDetailScreen } from '../screen/ImageDetailScreen';
-import { BottomTabNavigation } from './BottomTabNavigation';
+import { BottomTabNavigation, TypeBottomTabsScreenParams } from './BottomTabNavigation';
 
-const Stack = createNativeStackNavigator();
+type ScreenParams = {
+  BottomTab: NavigatorScreenParams<TypeBottomTabsScreenParams>;
+  ImageDetail: { url: string };
+};
+
+const Stack = createNativeStackNavigator<ScreenParams>();
 
 export const RootNavigation: React.FC = () => {
   return (
@@ -16,8 +29,8 @@ export const RootNavigation: React.FC = () => {
   );
 };
 
-// export const useRootNavigation = <RouteName extends keyof ScreenParams>() =>
-//   useNavigation<NativeStackNavigationProp<ScreenParams, RouteName>>();
+export const useRootNavigation = <RouteName extends keyof ScreenParams>() =>
+  useNavigation<NativeStackNavigationProp<ScreenParams, RouteName>>();
 
-// export const useRootRoute = <RouteName extends keyof ScreenParams>() =>
-//   useRoute<RouteProp<ScreenParams, RouteName>>();
+export const useRootRoute = <RouteName extends keyof ScreenParams>() =>
+  useRoute<RouteProp<ScreenParams, RouteName>>();
