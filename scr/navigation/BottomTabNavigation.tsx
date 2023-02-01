@@ -32,8 +32,8 @@ export const BottomTabNavigation = () => {
           return <TabIcon iconName={routeIconName} iconColor={color} />;
         },
       })}>
-      <Tabs.Screen name="ImageList" component={ImageListScreen}></Tabs.Screen>
-      <Tabs.Screen name="FavoriteImageList" component={FavoriteImageListScreen}></Tabs.Screen>
+      <Tabs.Screen name="ImageList" component={ImageListScreen} />
+      <Tabs.Screen name="FavoriteImageList" component={FavoriteImageListScreen} />
     </Tabs.Navigator>
   );
 };

@@ -42,8 +42,10 @@ export const ImageDetailScreen: React.FC = (props) => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Typography color={'white'}>DOWNLOAD</Typography>
-            <Icon name="download" size={24} color="white" />
+            <Typography fontSize={14} color={'white'}>
+              DOWNLOAD
+            </Typography>
+            <Icon name="download-outline" size={20} color="white" />
           </View>
         </View>
       </Button>
