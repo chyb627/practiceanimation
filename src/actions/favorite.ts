@@ -1,8 +1,13 @@
-export const ACTION_CLICKED_FAVORITE = 'ACTION_CLICKED_FAVORITE';
+export const CLICKED_FAVORITE = 'CLICKED_FAVORITE';
 
-export const onClickFavorite = (clickedItem) => {
+export interface ClickedFavoriteAction {
+  type: typeof CLICKED_FAVORITE;
+  clicked: string;
+}
+
+export const clickedFavorite = (clickedItem: string): ClickedFavoriteAction => {
   return {
-    type: ACTION_CLICKED_FAVORITE,
+    type: CLICKED_FAVORITE,
     clicked: clickedItem,
   };
 };

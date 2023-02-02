@@ -1,11 +1,15 @@
-import { ACTION_CLICKED_FAVORITE } from '../actions/favorite';
+import { CLICKED_FAVORITE, ClickedFavoriteAction } from '../actions/favorite';
 
-export const initialState = {
+interface InitialState {
+  favoriteList: string[];
+}
+
+export const initialState: InitialState = {
   favoriteList: [],
 };
 
-export const favoriteListReducer = (state = initialState, action) => {
-  if (action.type === ACTION_CLICKED_FAVORITE) {
+export const favoriteListReducer = (state = initialState, action: ClickedFavoriteAction) => {
+  if (action.type === CLICKED_FAVORITE) {
     const hasItem = state.favoriteList.filter((item) => item === action.clicked).length > 0;
 
     if (hasItem) {

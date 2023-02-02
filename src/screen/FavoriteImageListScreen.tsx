@@ -3,9 +3,10 @@ import { FlatList, StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Header } from '../components/Header/Header';
 import { PhotoListItem } from '../components/photoListItem';
+import { RootState } from '../store/store';
 
 export const FavoriteImageListScreen = () => {
-  const imageList = useSelector((state) => state.favorite.favoriteList);
+  const imageList = useSelector((state: RootState) => state.favorite.favoriteList);
   console.log('imageList::', imageList);
 
   return (

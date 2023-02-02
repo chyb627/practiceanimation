@@ -1,13 +1,14 @@
 import React, { useCallback } from 'react';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { onClickFavorite } from '../actions/favorite';
+import { clickedFavorite } from '../actions/favorite';
 import { Button } from '../components/Button';
 import { Header } from '../components/Header/Header';
 import { Icon } from '../components/Icons';
 import { RemoteImage } from '../components/RemoteImage';
 import { Typography } from '../components/Typography';
 import { useRootNavigation, useRootRoute } from '../navigation/RootNavigation';
+import { RootState } from '../store/store';
 
 export const ImageDetailScreen: React.FC = (props) => {
   const navigation = useRootNavigation<'ImageDetail'>();
@@ -17,7 +18,7 @@ export const ImageDetailScreen: React.FC = (props) => {
 
   const onPressFavorite = useCallback(() => {
     console.log('onPressFavorite');
-    dispatch(onClickFavorite(route.params.url));
+    dispatch(clickedFavorite(route.params.url));
   }, []);
 
   const onPressBack = useCallback(() => {
@@ -29,7 +30,7 @@ export const ImageDetailScreen: React.FC = (props) => {
     console.log('download');
   }, []);
 
-  const isFavorite = useSelector((state) => {
+  const isFavorite = useSelector((state: RootState) => {
     return state.favorite.favoriteList.filter((item) => item === route.params.url).length > 0;
   });
 
